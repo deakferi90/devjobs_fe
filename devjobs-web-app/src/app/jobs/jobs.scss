@@ -1,0 +1,7 @@
+.job-listing-box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px 50px;
+  width: 80%;
+  margin: 100px auto 0 auto;
+}

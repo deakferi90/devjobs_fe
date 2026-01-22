@@ -1,1 +1,12 @@
-<h1 class="text-3xl font-bold underline">jobs works!</h1>
+<div class="job-listing-box">
+  @for (item of jobList; track item.id) {
+    <div class="w-[350px] h-[283px] bg-[#fff]">
+      <div
+        class="h-[50px] w-[50px] flex items-center justify-center mt-[-25px] rounded-[15px]"
+        [style.background]="item.logoBackground"
+      >
+        <img [src]="item.logo" alt="logo" class="object-contain" />
+      </div>
+    </div>
+  }
+</div>

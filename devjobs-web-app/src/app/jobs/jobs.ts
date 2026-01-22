@@ -9,6 +9,7 @@ import { Job } from './service/job';
   styleUrl: './jobs.scss',
 })
 export class Jobs implements OnInit {
+  jobList: any = [];
   constructor(private jobService: Job) {}
 
   ngOnInit(): void {
@@ -18,7 +19,8 @@ export class Jobs implements OnInit {
   getJobs() {
     this.jobService.getJobs().subscribe({
       next: (list: any) => {
-        console.log('Jobs fetched:', list);
+        this.jobList = list;
+        console.log('Jobs fetched:', this.jobList);
       },
       error: (err: any) => console.error('Failed to fetch jobs', err),
     });
