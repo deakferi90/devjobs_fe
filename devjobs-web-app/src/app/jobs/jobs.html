@@ -7,6 +7,16 @@
       >
         <img [src]="item.logo" alt="logo" class="object-contain" />
       </div>
+      <div>
+        <div class="flex items-center gap-[10px]">
+          <span class="text-[#6E8098] opacity-[1]">{{ item.postedAt }}</span>
+          <span class="flex bg-[#6E8098] w-[4px] h-[4px] rounded-full"></span>
+          <span class="text-[#6E8098] opacity-[1]">{{ item.contract }}</span>
+        </div>
+        <h2 class="text-[#19202D]">{{ item.position }}</h2>
+        <span class="text-[#6E8098]">{{ item.company }}</span>
+      </div>
+      <div class="text-[#5964E0] font-size">{{ item.location }}</div>
     </div>
   }
 </div>
