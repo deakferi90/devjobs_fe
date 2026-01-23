@@ -7,11 +7,12 @@
   .header-img {
     height: 100%;
     display: block;
-    width: -webkit-fill-available;
+    width: auto;
 
     @media screen and (max-width: 667px) {
       position: absolute;
       left: -50px;
+      width: -webkit-fill-available;
     }
   }
 
