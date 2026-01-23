@@ -2,21 +2,23 @@
   @for (item of jobList; track item.id) {
     <div class="w-[350px] h-[283px] bg-[#fff]">
       <div
-        class="h-[50px] w-[50px] flex items-center justify-center mt-[-25px] rounded-[15px]"
+        class="h-[50px] w-[50px] flex items-center justify-center mt-[-25px] ml-[8%] rounded-[15px]"
         [style.background]="item.logoBackground"
       >
         <img [src]="item.logo" alt="logo" class="object-contain" />
       </div>
-      <div>
+      <div class="mt-[15%] ml-[8%]">
         <div class="flex items-center gap-[10px]">
           <span class="text-[#6E8098] opacity-[1]">{{ item.postedAt }}</span>
           <span class="flex bg-[#6E8098] w-[4px] h-[4px] rounded-full"></span>
           <span class="text-[#6E8098] opacity-[1]">{{ item.contract }}</span>
         </div>
-        <h2 class="text-[#19202D]">{{ item.position }}</h2>
+        <p class="text-[#19202D] text-[20px] font-[600]">
+          {{ item.position }}
+        </p>
         <span class="text-[#6E8098]">{{ item.company }}</span>
+        <div class="text-[#5964E0] font-size">{{ item.location }}</div>
       </div>
-      <div class="text-[#5964E0] font-size">{{ item.location }}</div>
     </div>
   }
 </div>

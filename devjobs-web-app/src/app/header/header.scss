@@ -1,18 +1,12 @@
 .image-container {
-  width: auto;
+  width: 100vw;
   height: 160px;
   overflow: hidden;
-  object-fit: fill;
   position: relative;
 
   .header-img {
-    width: 100%;
     height: 100%;
     display: block;
-
-    @media screen and (max-width: 1440px) {
-      width: auto;
-    }
   }
 
   .my-flex {
