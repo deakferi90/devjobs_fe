@@ -65,3 +65,14 @@ input:checked + .switch::before {
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
   background-color: #fff;
 }
+
+.mat-mdc-form-field-subscript-wrapper .mat-mdc-form-field-bottom-align {
+  display: none;
+}
+
+.example-full-width {
+  position: absolute;
+  top: 140px;
+  height: 80px;
+  z-index: 9;
+}
