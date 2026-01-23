@@ -10,19 +10,11 @@
   @media screen and (max-width: 1366px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
-
-// .job-listing-box > :nth-child(1) {
-//   justify-self: start;
-// }
-
-// .job-listing-box > :nth-child(2) {
-//   justify-self: center;
-// }
-
-// .job-listing-box > :nth-child(3) {
-//   justify-self: end;
-// }
 
 .font-size {
   font-weight: 800;

@@ -8,15 +8,19 @@
     height: 100%;
     display: block;
     width: -webkit-fill-available;
+
+    @media screen and (max-width: 667px) {
+      position: absolute;
+      left: -50px;
+    }
   }
 
   .my-flex {
     position: absolute;
     top: calc(50% - 16px);
-    left: 10%;
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -48,4 +52,8 @@
 
 input:checked + .switch::before {
   left: 27px;
+}
+
+.name-logo {
+  margin-left: 10%;
 }
