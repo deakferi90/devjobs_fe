@@ -1,13 +1,16 @@
 .image-container {
-  width: 100vw;
   height: 160px;
   overflow: hidden;
   position: relative;
 
+  @media screen and (max-width: 667px) {
+    height: 136px;
+  }
+
   .header-img {
     height: 100%;
     display: block;
-    width: auto;
+    width: 100vw;
 
     @media screen and (max-width: 667px) {
       position: absolute;
@@ -57,4 +60,8 @@ input:checked + .switch::before {
 
 .name-logo {
   margin-left: 10%;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #fff;
 }
