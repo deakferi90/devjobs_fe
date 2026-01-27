@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from './service/job';
+import { Jobs } from './job.interface';
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
-  imports: [],
   templateUrl: './jobs.html',
-  styleUrl: './jobs.scss',
+  styleUrls: ['./jobs.scss'],
 })
-export class Jobs implements OnInit {
-  jobList: any = [];
+export class JobsListComponent implements OnInit {
+  jobList: Jobs[] = [];
+  filteredJobsList: Jobs[] = [];
+
   constructor(private jobService: Job) {}
 
   ngOnInit(): void {
@@ -18,11 +20,37 @@ export class Jobs implements OnInit {
 
   getJobs() {
     this.jobService.getJobs().subscribe({
-      next: (list: any) => {
+      next: (list: Jobs[]) => {
         this.jobList = list;
-        console.log('Jobs fetched:', this.jobList);
+        this.filteredJobsList = list;
       },
       error: (err: any) => console.error('Failed to fetch jobs', err),
     });
+  }
+
+  applyFilter(filters: any) {
+    const titleTerm = filters.title?.toLowerCase().trim() || '';
+    const locationTerm = filters.location?.toLowerCase().trim() || '';
+    const fullTimeFilter = filters.fullTime;
+
+    this.filteredJobsList = this.jobList.filter((job) => {
+      const matchesTitle = titleTerm
+        ? job.position.toLowerCase().includes(titleTerm)
+        : true;
+
+      const matchesLocation = locationTerm
+        ? job.location?.toLowerCase().includes(locationTerm)
+        : true;
+
+      const matchesFullTime = fullTimeFilter
+        ? job.contract === 'Full Time'
+        : true;
+
+      return matchesTitle && matchesLocation && matchesFullTime;
+    });
+  }
+
+  trackByJobId(index: number, job: Jobs) {
+    return job.id;
   }
 }
