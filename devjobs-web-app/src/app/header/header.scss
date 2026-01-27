@@ -3,7 +3,7 @@
   overflow: hidden;
   position: relative;
 
-  @media screen and (max-width: 667px) {
+  @media screen and (max-width: 720px) {
     height: 136px;
   }
 
@@ -25,6 +25,10 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
+
+    @media screen and (max-width: 720px) {
+      top: 30px;
+    }
   }
 }
 

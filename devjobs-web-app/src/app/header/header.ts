@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FilterComponent } from '../filter-component/filter-component';
+import { JobFilters } from '../filter-component/Job-filters';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,9 @@ import { FilterComponent } from '../filter-component/filter-component';
   styleUrl: './header.scss',
 })
 export class Header {
-  @Output() searchChange = new EventEmitter<string>();
+  @Output() searchChange = new EventEmitter<JobFilters>();
 
-  onFilterChange(search: string) {
+  onFilterChange(search: JobFilters) {
     this.searchChange.emit(search);
   }
 }

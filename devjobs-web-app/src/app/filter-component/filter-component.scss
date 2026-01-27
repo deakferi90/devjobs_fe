@@ -6,9 +6,18 @@
   background: #5964e0;
   color: white;
   cursor: pointer;
+
+  @media screen and (max-width: 720px) {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 input::placeholder {
-  color: #a0aec0; /* placeholder color */
+  color: #a0aec0;
   opacity: 0.6;
+}
+
+.my-btn img {
+  fill: white;
 }
