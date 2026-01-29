@@ -26,6 +26,8 @@ export class FilterComponent {
   location = '';
   fullTime = false;
   isBigger = signal(true);
+  inputText: string = '';
+  textColor: string = 'black';
 
   constructor(private bo: BreakpointObserver) {
     this.bo.observe(['(min-width: 721px)']).subscribe((result) => {
@@ -41,5 +43,13 @@ export class FilterComponent {
       location: this.location,
       fullTime: this.fullTime,
     });
+  }
+
+  onKeyUp() {
+    if (this.inputText.length > 0) {
+      this.textColor = 'red';
+    } else {
+      this.textColor = 'black';
+    }
   }
 }

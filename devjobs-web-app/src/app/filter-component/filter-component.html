@@ -8,7 +8,7 @@
         matInput
         placeholder="Filter by title..."
         [(ngModel)]="title"
-        class="h-full border-none outline-none pl-[10px] input-el"
+        class="h-full border-none outline-none pl-[10px] input-el sm-input"
       />
     </div>
 
@@ -20,7 +20,7 @@
         matInput
         placeholder="Filter by location..."
         [(ngModel)]="location"
-        class="h-full border-none outline-none pl-[10px] input-el"
+        class="h-full border-none outline-none pl-[10px] input-el sm-input"
       />
     </div>
 
@@ -42,14 +42,15 @@
   </div>
 } @else {
   <div
-    class="bg-[#fff] flex justify-between items-center gap-2 relative z-10 mt-[-40px] w-[90%] mx-auto md:mt-[-28px] md:w-full md:mx-0 ml-4 mr-4 rounded-[10px] px-2"
+    class="bg-[#fff] flex justify-between items-center gap-2 relative z-10 mt-[-40px] w-[90%] mx-auto md:mt-[-28px] md:w-full md:mx-0 ml-4 mr-4 rounded-[10px] px-2 input-box"
+    (keyup)="onKeyUp()"
   >
     <div class="flex-1 pl-[20px] flex items-center rounded-l-[10px]">
       <input
         matInput
         placeholder="Filter by title..."
         [(ngModel)]="title"
-        class="h-full border-none outline-none pl-[10px] w-full input-el"
+        class="h-full border-none outline-none pl-[10px] w-full input-el sm-input"
       />
     </div>
 

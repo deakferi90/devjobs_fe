@@ -63,23 +63,15 @@ export class Header implements OnInit, AfterViewInit {
   }
 
   private applyTheme(isDark: boolean) {
-    const filteringBoxes = document.querySelectorAll(
-      '.filtering-boxes',
-    ) as NodeListOf<HTMLElement>;
-
-    const boxColors = document.querySelectorAll(
-      '.boxes',
-    ) as NodeListOf<HTMLElement>;
-
-    const inputEl = document.querySelectorAll(
-      '.input-el',
-    ) as NodeListOf<HTMLElement>;
-
-    const titleText = document.querySelectorAll(
-      '.position',
-    ) as NodeListOf<HTMLElement>;
-
-    const labelText = document.querySelector('.label-text') as HTMLElement;
+    const filteringBoxes =
+      document.querySelectorAll<HTMLElement>('.filtering-boxes');
+    const boxColors = document.querySelectorAll<HTMLElement>('.boxes');
+    const inputEl = document.querySelectorAll<HTMLElement>('.input-el');
+    const titleText = document.querySelectorAll<HTMLElement>('.position');
+    const labelText = document.querySelector<HTMLElement>('.label-text');
+    const respInput = document.querySelectorAll<HTMLInputElement>('.sm-input');
+    const inputBoxMobView =
+      document.querySelectorAll<HTMLInputElement>('.input-box');
 
     if (isDark) {
       document.body.style.backgroundColor = '#121721';
@@ -89,8 +81,16 @@ export class Header implements OnInit, AfterViewInit {
       inputEl.forEach((box) => (box.style.backgroundColor = '#19202D'));
       filteringBoxes.forEach((box) => (box.style.backgroundColor = '#19202D'));
       titleText.forEach((title) => (title.style.color = '#fff'));
-
       if (labelText) labelText.style.color = '#fff';
+      if (respInput) {
+        respInput.forEach((input) => {
+          ((input.style.color = '#fff'),
+            (input.style.backgroundColor = '#19202D'));
+        });
+      }
+      inputBoxMobView.forEach((input) => {
+        input.style.backgroundColor = '#19202D';
+      });
     } else {
       document.body.style.backgroundColor = '#f4f6f8';
       document.body.style.color = '#132034';
@@ -101,6 +101,15 @@ export class Header implements OnInit, AfterViewInit {
       titleText.forEach((title) => (title.style.color = '#19202D'));
 
       if (labelText) labelText.style.color = '#19202D';
+      if (respInput) {
+        respInput.forEach((input) => {
+          ((input.style.color = '#000'),
+            (input.style.backgroundColor = '#fff'));
+        });
+      }
+      inputBoxMobView.forEach((input) => {
+        input.style.backgroundColor = '#fff';
+      });
     }
   }
 }
