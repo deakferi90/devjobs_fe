@@ -23,9 +23,7 @@ export class Header implements OnInit, AfterViewInit {
 
   private observer!: MutationObserver;
 
-  ngOnInit() {
-    // nothing here on purpose
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     const isDark = localStorage.getItem('darkMode') === 'true';
@@ -40,7 +38,6 @@ export class Header implements OnInit, AfterViewInit {
 
     this.applyTheme(isDark);
 
-    // 🔥 VERY IMPORTANT: re-apply theme when Angular renders new DOM
     this.observer = new MutationObserver(() => {
       this.applyTheme(isDark);
     });
