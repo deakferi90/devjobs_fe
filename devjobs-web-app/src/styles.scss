@@ -53,6 +53,9 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
@@ -61,8 +64,8 @@ body {
   border-radius: 0 !important;
 }
 
-.mdc-checkbox__background {
-  background: lightgray !important;
-  border: none !important;
+.theme-checkbox .mdc-checkbox__background {
+  background-color: lightgray;
   border-radius: 5px !important;
+  border: none !important;
 }

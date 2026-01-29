@@ -4,20 +4,26 @@
     src="assets/Background.png"
     alt="Logo"
   />
+
   <div class="flex my-flex">
     <img class="name-logo" src="assets/devjobs.png" alt="name-logo" />
+
     <div class="flex items-center gap-[10px]">
+      <img class="name-logo" src="assets/sun.png" alt="sun-logo" />
+
       <div>
-        <img class="name-logo" src="assets/sun.png" alt="sun-logo" />
+        <input
+          type="checkbox"
+          hidden
+          id="darkModeCheckbox"
+          (change)="toggleDarkMode($event)"
+        />
+        <label class="switch" for="darkModeCheckbox"></label>
       </div>
-      <div>
-        <input type="checkbox" hidden="hidden" id="username" />
-        <label class="switch" for="username"></label>
-      </div>
-      <div>
-        <img class="name-logo" src="assets/moon.png" alt="moon-logo" />
-      </div>
+
+      <img class="name-logo" src="assets/moon.png" alt="moon-logo" />
     </div>
   </div>
 </div>
+
 <app-filter-component (searchChange)="onFilterChange($event)" />

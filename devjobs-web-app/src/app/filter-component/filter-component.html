@@ -1,35 +1,40 @@
 @if (isBigger()) {
   <div class="flex justify-center mt-[-28px] gap-4">
     <div
-      class="z-1 bg-[#fff] pl-[20px] flex items-center border-r border-[#6E8098]/20 rounded-l-[10px]"
+      class="z-1 bg-[#fff] pl-[20px] flex items-center border-r border-[#6E8098]/20 rounded-l-[10px] filtering-boxes"
     >
       <img src="assets/desktop/icon-search.svg" class="w-6 h-6" />
       <input
         matInput
         placeholder="Filter by title..."
         [(ngModel)]="title"
-        class="h-full border-none outline-none pl-[10px]"
+        class="h-full border-none outline-none pl-[10px] input-el"
       />
     </div>
 
     <div
-      class="z-1 bg-[#fff] pl-[20px] flex items-center border-r border-[#6E8098]/20"
+      class="z-1 bg-[#fff] pl-[20px] flex items-center border-r border-[#6E8098]/20 filtering-boxes"
     >
       <img src="assets/desktop/icon-location.svg" class="w-6 h-6" />
       <input
         matInput
         placeholder="Filter by location..."
         [(ngModel)]="location"
-        class="h-full border-none outline-none pl-[10px]"
+        class="h-full border-none outline-none pl-[10px] input-el"
       />
     </div>
 
     <div
-      class="bg-[#fff] z-[1] h-[80px] w-[250px] flex items-center gap-[40px] rounded-lg shadow-sm px-4 rounded-r-[10px]"
+      class="bg-[#fff] z-[1] h-[80px] w-[250px] flex items-center gap-[20px] rounded-lg shadow-sm px-4 rounded-r-[10px] filtering-boxes"
     >
-      <label class="flex items-center gap-2 text-[#19202D] font-bold">
-        <mat-checkbox [(ngModel)]="fullTime"></mat-checkbox>
-        Full Time
+      <label
+        class="flex items-center gap-0 text-[#19202D] font-bold label-text"
+      >
+        <mat-checkbox
+          class="theme-checkbox"
+          [(ngModel)]="fullTime"
+        ></mat-checkbox>
+        Full Time Only
       </label>
 
       <button class="my-btn" (click)="activateFilter()">Search</button>
@@ -44,12 +49,12 @@
         matInput
         placeholder="Filter by title..."
         [(ngModel)]="title"
-        class="h-full border-none outline-none pl-[10px] w-full"
+        class="h-full border-none outline-none pl-[10px] w-full input-el"
       />
     </div>
 
     <div
-      class="h-[80px] flex items-center gap-[15px] rounded-lg shadow-sm px-4 rounded-r-[10px] w-auto md:w-[250px] mr-[20px] ml-auto"
+      class="h-[80px] flex items-center gap-[15px] rounded-lg shadow-sm px-4 rounded-r-[10px] w-auto md:w-[250px] mr-[20px] ml-auto filtering-boxes"
     >
       <img src="assets/filter.svg" class="w-6 h-6" />
       <button class="my-btn" (click)="activateFilter()">

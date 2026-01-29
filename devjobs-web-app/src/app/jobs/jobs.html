@@ -1,6 +1,6 @@
 <div class="job-listing-box mt-[100px] mb-[100px]">
   @for (item of filteredJobsList; track item.id) {
-    <div class="w-[350px] h-[258px] bg-[#fff] rounded-[20px]">
+    <div class="w-[350px] h-[258px] bg-[#fff] rounded-[20px] boxes">
       <div
         class="h-[50px] w-[50px] flex items-center justify-center ml-[8%] mt-[-25px] rounded-[15px]"
         [style.background]="item.logoBackground"
@@ -13,7 +13,7 @@
           <span class="flex bg-[#6E8098] w-[4px] h-[4px] rounded-full"></span>
           <span class="text-[#6E8098]">{{ item.contract }}</span>
         </div>
-        <p class="text-[#19202D] text-[20px] font-[600]">
+        <p class="text-[#19202D] text-[20px] font-[600] position">
           {{ item.position }}
         </p>
         <span class="text-[#6E8098]">{{ item.company }}</span>
