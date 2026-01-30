@@ -21,8 +21,6 @@ import { JobFilters } from '../filter-component/Job-filters';
 export class Header implements OnInit, AfterViewInit {
   @Output() searchChange = new EventEmitter<JobFilters>();
 
-  private observer!: MutationObserver;
-
   ngOnInit() {}
 
   ngAfterViewInit() {
@@ -37,15 +35,6 @@ export class Header implements OnInit, AfterViewInit {
     }
 
     this.applyTheme(isDark);
-
-    this.observer = new MutationObserver(() => {
-      this.applyTheme(isDark);
-    });
-
-    this.observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
   }
 
   onFilterChange(search: JobFilters) {
