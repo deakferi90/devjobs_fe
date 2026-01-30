@@ -49,6 +49,7 @@ export class Header implements OnInit, AfterViewInit {
 
     localStorage.setItem('darkMode', String(isDark));
     this.applyTheme(isDark);
+    this.themeService.toggle();
   }
 
   private applyTheme(isDark: boolean) {
