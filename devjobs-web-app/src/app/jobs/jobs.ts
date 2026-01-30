@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from './service/job';
 import { Jobs } from './job.interface';
+import { ThemeService } from '../shared/theme.service';
 
 @Component({
   selector: 'app-jobs',
@@ -12,7 +13,10 @@ export class JobsListComponent implements OnInit {
   jobList: Jobs[] = [];
   filteredJobsList: Jobs[] = [];
 
-  constructor(private jobService: Job) {}
+  constructor(
+    private jobService: Job,
+    public themeService: ThemeService,
+  ) {}
 
   ngOnInit(): void {
     this.getJobs();

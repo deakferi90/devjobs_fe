@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FilterComponent } from '../filter-component/filter-component';
 import { JobFilters } from '../filter-component/Job-filters';
+import { ThemeService } from '../shared/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +21,8 @@ import { JobFilters } from '../filter-component/Job-filters';
 })
 export class Header implements OnInit, AfterViewInit {
   @Output() searchChange = new EventEmitter<JobFilters>();
+
+  constructor(public themeService: ThemeService) {}
 
   ngOnInit() {}
 

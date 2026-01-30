@@ -1,23 +1,56 @@
 <div class="job-listing-box mt-[100px] mb-[100px]">
   @for (item of filteredJobsList; track item.id) {
-    <div class="w-[350px] h-[258px] bg-[#fff] rounded-[20px] boxes">
+    <div
+      class="w-[350px] h-[258px] rounded-[20px] boxes p-4"
+      [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
+      [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
+    >
       <div
         class="h-[50px] w-[50px] flex items-center justify-center ml-[8%] mt-[-25px] rounded-[15px]"
         [style.background]="item.logoBackground"
       >
         <img [src]="item.logo" alt="logo" class="object-contain" />
       </div>
+
       <div class="ml-[8%] mt-[10%]">
-        <div class="flex items-center gap-[10px]">
-          <span class="text-[#6E8098] opacity-[1]">{{ item.postedAt }}</span>
-          <span class="flex bg-[#6E8098] w-[4px] h-[4px] rounded-full"></span>
-          <span class="text-[#6E8098]">{{ item.contract }}</span>
+        <div
+          class="flex items-center gap-[10px]"
+          [style.color]="
+            themeService.theme() === 'dark' ? '#9CA3AF' : '#6E8098'
+          "
+        >
+          <span>{{ item.postedAt }}</span>
+          <span
+            class="flex w-[4px] h-[4px] rounded-full"
+            [style.background]="
+              themeService.theme() === 'dark' ? '#9CA3AF' : '#6E8098'
+            "
+          ></span>
+          <span>{{ item.contract }}</span>
         </div>
-        <p class="text-[#19202D] text-[20px] font-[600] position">
+
+        <p
+          [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
+          class="text-[20px] font-[600] position"
+        >
           {{ item.position }}
         </p>
-        <span class="text-[#6E8098]">{{ item.company }}</span>
-        <div class="text-[#5964E0] font-size mt-[16%]">{{ item.location }}</div>
+
+        <span
+          [style.color]="
+            themeService.theme() === 'dark' ? '#D1D5DB' : '#6E8098'
+          "
+          >{{ item.company }}</span
+        >
+
+        <div
+          [style.color]="
+            themeService.theme() === 'dark' ? '#4F46E5' : '#5964E0'
+          "
+          class="font-size mt-[16%]"
+        >
+          {{ item.location }}
+        </div>
       </div>
     </div>
   }
