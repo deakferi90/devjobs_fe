@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Job } from './service/job';
 import { Jobs } from './job.interface';
 import { ThemeService } from '../shared/theme.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-jobs',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './jobs.html',
   styleUrls: ['./jobs.scss'],
 })

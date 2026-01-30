@@ -19,3 +19,21 @@
 .font-size {
   font-weight: 800;
 }
+
+.job-card {
+  background-color: #fff;
+  color: #19202d;
+}
+
+.job-card.dark {
+  background-color: #19202d;
+  color: #ffffff;
+}
+
+.job-meta {
+  color: #6e8098;
+}
+
+.job-meta.dark {
+  color: #9ca3af;
+}

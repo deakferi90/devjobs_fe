@@ -17,6 +17,8 @@
           #darkMode
           hidden
           id="darkModeCheckbox"
+          [checked]="themeService.theme() === 'dark'"
+          (change)="themeService.toggle()"
           (change)="toggleDarkMode($event)"
         />
         <label class="switch" for="darkModeCheckbox"></label>
