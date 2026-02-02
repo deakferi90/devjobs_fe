@@ -21,23 +21,22 @@ import { ThemeService } from '../shared/theme.service';
 })
 export class Header implements OnInit, AfterViewInit {
   @Output() searchChange = new EventEmitter<JobFilters>();
+  private isDark = false;
 
   constructor(public themeService: ThemeService) {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    const isDark = localStorage.getItem('darkMode') === 'true';
-
     const checkbox = document.querySelector(
       '#darkModeCheckbox',
     ) as HTMLInputElement;
 
     if (checkbox) {
-      checkbox.checked = isDark;
+      checkbox.checked = this.themeService.theme() === 'dark';
     }
 
-    this.applyTheme(isDark);
+    this.applyTheme(this.themeService.theme() === 'dark');
   }
 
   onFilterChange(search: JobFilters) {
@@ -45,10 +44,17 @@ export class Header implements OnInit, AfterViewInit {
   }
 
   toggleDarkMode(event: Event) {
-    const isDark = (event.target as HTMLInputElement).checked;
+    const checked = (event.target as HTMLInputElement).checked;
 
-    localStorage.setItem('darkMode', String(isDark));
-    this.applyTheme(isDark);
+    if (checked && this.themeService.theme() !== 'dark') {
+      this.themeService.toggle();
+    }
+
+    if (!checked && this.themeService.theme() !== 'light') {
+      this.themeService.toggle();
+    }
+
+    this.applyTheme(this.themeService.theme() === 'dark');
   }
 
   private applyTheme(isDark: boolean) {
@@ -79,6 +85,7 @@ export class Header implements OnInit, AfterViewInit {
       }
       inputBoxMobView.forEach((input) => {
         input.style.backgroundColor = '#19202D';
+        input.style.color = '#fff';
       });
     } else {
       document.body.style.backgroundColor = '#f4f6f8';
