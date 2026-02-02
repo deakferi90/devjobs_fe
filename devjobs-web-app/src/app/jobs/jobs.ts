@@ -3,6 +3,7 @@ import { Job } from './service/job';
 import { Jobs } from './job.interface';
 import { ThemeService } from '../shared/theme.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jobs',
@@ -18,6 +19,7 @@ export class JobsListComponent implements OnInit {
   constructor(
     private jobService: Job,
     public themeService: ThemeService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -58,5 +60,9 @@ export class JobsListComponent implements OnInit {
 
   trackByJobId(index: number, job: Jobs) {
     return job.id;
+  }
+
+  openDetailsPage(id: string) {
+    this.router.navigate(['details', id]);
   }
 }

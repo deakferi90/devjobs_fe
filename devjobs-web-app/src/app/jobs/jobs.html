@@ -1,9 +1,10 @@
 <div class="job-listing-box mt-[100px] mb-[100px]">
   @for (item of filteredJobsList; track item.id) {
     <div
-      class="w-[350px] h-[258px] rounded-[20px] boxes p-4"
+      class="w-[350px] h-[258px] rounded-[20px] boxes p-4 cursor-pointer"
       [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
       [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
+      (click)="openDetailsPage(item.id)"
     >
       <div
         class="h-[50px] w-[50px] flex items-center justify-center ml-[8%] mt-[-25px] rounded-[15px]"

@@ -2,6 +2,8 @@ export interface Jobs {
   _id?: string;
   id: string;
   logoBackground: string;
+  requirements: any;
+  role: any;
   logo: string;
   postedAt: string;
   contract: string;
