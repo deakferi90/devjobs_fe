@@ -20,7 +20,6 @@ export class JobsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Get the id from the route
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.fetchJob(id);
   }
