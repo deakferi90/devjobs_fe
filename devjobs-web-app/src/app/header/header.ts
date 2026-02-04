@@ -9,21 +9,40 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FilterComponent } from '../filter-component/filter-component';
+import { Logo } from '../logo/logo';
 import { JobFilters } from '../filter-component/Job-filters';
 import { ThemeService } from '../shared/theme.service';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, FilterComponent],
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FilterComponent,
+    Logo,
+  ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
 export class Header implements OnInit, AfterViewInit {
   @Output() searchChange = new EventEmitter<JobFilters>();
-  jobs: any;
+  showFilter = false;
 
-  constructor(public themeService: ThemeService) {}
+  constructor(
+    public themeService: ThemeService,
+    private router: Router,
+  ) {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: any) => {
+        // Show filter only on /jobs page
+        this.showFilter = event.urlAfterRedirects === '/jobs';
+      });
+  }
 
   ngOnInit() {}
 

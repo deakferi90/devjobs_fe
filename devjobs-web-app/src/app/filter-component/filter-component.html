@@ -1,7 +1,10 @@
 @if (isBigger()) {
-  <div class="flex justify-center mt-[-28px] gap-4">
+  <div class="flex justify-center mt-[-28px] gap-4 filter-component">
     <div
-      class="z-1 bg-[#fff] pl-[20px] flex items-center border-r border-[#6E8098]/20 rounded-l-[10px] filtering-boxes"
+      class="z-1 pl-[20px] flex items-center border-r border-[#6E8098]/20 rounded-l-[10px] filtering-boxes"
+      [style.background-color]="
+        themeService.theme() === 'dark' ? '#19202D' : '#fff'
+      "
     >
       <img src="assets/desktop/icon-search.svg" class="w-6 h-6" />
       <input
@@ -9,11 +12,18 @@
         placeholder="Filter by title..."
         [(ngModel)]="title"
         class="h-full border-none outline-none pl-[10px] input-el sm-input"
+        [style.background-color]="
+          themeService.theme() === 'dark' ? '#19202D' : '#fff'
+        "
+        [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
       />
     </div>
 
     <div
-      class="z-1 bg-[#fff] pl-[20px] flex items-center border-r border-[#6E8098]/20 filtering-boxes"
+      class="z-1 pl-[20px] flex items-center border-r border-[#6E8098]/20 filtering-boxes"
+      [style.background-color]="
+        themeService.theme() === 'dark' ? '#19202D' : '#fff'
+      "
     >
       <img src="assets/desktop/icon-location.svg" class="w-6 h-6" />
       <input
@@ -21,30 +31,49 @@
         placeholder="Filter by location..."
         [(ngModel)]="location"
         class="h-full border-none outline-none pl-[10px] input-el sm-input"
+        [style.background-color]="
+          themeService.theme() === 'dark' ? '#19202D' : '#fff'
+        "
+        [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
       />
     </div>
 
     <div
-      class="bg-[#fff] z-[1] h-[80px] w-[250px] flex items-center gap-[20px] rounded-lg shadow-sm px-4 rounded-r-[10px] filtering-boxes"
+      class="z-[1] h-[80px] w-[250px] flex items-center gap-[20px] rounded-lg shadow-sm px-4 rounded-r-[10px] filtering-boxes"
+      [style.background-color]="
+        themeService.theme() === 'dark' ? '#19202D' : '#fff'
+      "
+      [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
     >
       <label
-        class="flex items-center gap-0 text-[#19202D] font-bold label-text"
+        class="flex items-center gap-0 font-bold label-text"
+        [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
       >
         <mat-checkbox
-          class="theme-checkbox"
           [(ngModel)]="fullTime"
+          [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
         ></mat-checkbox>
         Full Time Only
       </label>
 
-      <button class="my-btn" (click)="activateFilter()">Search</button>
+      <button
+        class="my-btn"
+        (click)="activateFilter()"
+        [style.background-color]="
+          themeService.theme() === 'dark' ? '#5964E0' : '#4F46E5'
+        "
+        [style.color]="'#fff'"
+      >
+        Search
+      </button>
     </div>
   </div>
 } @else {
   <div
     class="flex justify-between items-center gap-2 relative z-10 mt-[-40px] w-[90%] mx-auto md:mt-[-28px] md:w-full md:mx-0 ml-4 mr-4 rounded-[10px] px-2 input-box"
-    [class.bg-[#fff]]="themeService.theme() === 'dark'"
-    [class.bg-[#19202D]]="themeService.theme() === 'dark'"
+    [style.background-color]="
+      themeService.theme() === 'dark' ? '#19202D' : '#fff'
+    "
   >
     <div class="flex-1 pl-[20px] flex items-center rounded-l-[10px] input-box">
       <input
@@ -52,6 +81,10 @@
         placeholder="Filter by title..."
         [(ngModel)]="title"
         class="h-full border-none outline-none pl-[10px] w-full input-el sm-input input-box"
+        [style.background-color]="
+          themeService.theme() === 'dark' ? '#19202D' : '#fff'
+        "
+        [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
       />
     </div>
 

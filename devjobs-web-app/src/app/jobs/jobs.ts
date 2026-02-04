@@ -69,6 +69,7 @@ export class JobsListComponent implements OnInit {
   }
 
   openDetailsPage(id: string) {
+    this.filterService.resetFilters();
     this.router.navigate(['jobs', id]);
   }
 }

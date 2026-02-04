@@ -28,6 +28,12 @@
   </div>
 </div>
 
-<app-filter-component
-  (searchChange)="onFilterChange($event)"
-></app-filter-component>
+@if (showFilter) {
+  <app-filter-component
+    (searchChange)="onFilterChange($event)"
+  ></app-filter-component>
+} @else {
+  <div class="relative flex justify-center">
+    <app-logo></app-logo>
+  </div>
+}
