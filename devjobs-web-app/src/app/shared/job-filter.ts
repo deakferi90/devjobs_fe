@@ -17,4 +17,12 @@ export class JobFilterService {
   getFilters() {
     return this.filters$.asObservable();
   }
+
+  resetFilters() {
+    this.filters$.next({
+      title: '',
+      location: '',
+      fullTime: false,
+    });
+  }
 }
