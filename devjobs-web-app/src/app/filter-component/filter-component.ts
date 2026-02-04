@@ -44,9 +44,6 @@ export class FilterComponent {
   @Output() searchChange = new EventEmitter<JobFilters>();
 
   activateFilter() {
-    console.log('FILTER EMITTED', this.title);
-    console.log('FILTER EMITTED', this.location);
-    console.log('FILTER EMITTED', this.fullTime);
     this.filterService.setFilters({
       title: this.title,
       location: this.location,

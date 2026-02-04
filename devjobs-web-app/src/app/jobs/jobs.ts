@@ -28,7 +28,6 @@ export class JobsListComponent implements OnInit {
     this.getJobs();
 
     this.filterService.getFilters().subscribe((filters) => {
-      console.log('JOBS RECEIVED FILTERS', filters);
       this.applyFilter(filters);
     });
   }
@@ -44,7 +43,6 @@ export class JobsListComponent implements OnInit {
   }
 
   applyFilter(filters: any) {
-    console.log('JOBS RECEIVED FILTERS', filters);
     const titleTerm = filters.title?.toLowerCase().trim() || '';
     const locationTerm = filters.location?.toLowerCase().trim() || '';
     const fullTimeFilter = filters.fullTime;
