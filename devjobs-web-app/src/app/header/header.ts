@@ -9,11 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FilterComponent } from '../filter-component/filter-component';
-import { Logo } from '../logo/logo';
+import { Logo } from '../jobs/logo/logo';
 import { JobFilters } from '../filter-component/Job-filters';
 import { ThemeService } from '../shared/theme.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { JobStateService } from '../shared/jobstate';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +26,7 @@ import { filter } from 'rxjs';
     MatInputModule,
     FilterComponent,
     Logo,
+    CommonModule,
   ],
   templateUrl: './header.html',
   styleUrl: './header.scss',
@@ -31,15 +34,16 @@ import { filter } from 'rxjs';
 export class Header implements OnInit, AfterViewInit {
   @Output() searchChange = new EventEmitter<JobFilters>();
   showFilter = false;
+  selectedJobId: number | null = null;
 
   constructor(
     public themeService: ThemeService,
     private router: Router,
+    public jobState: JobStateService,
   ) {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        // Show filter only on /jobs page
         this.showFilter = event.urlAfterRedirects === '/jobs';
       });
   }
@@ -56,6 +60,10 @@ export class Header implements OnInit, AfterViewInit {
     }
 
     this.applyTheme(this.themeService.theme() === 'dark');
+  }
+
+  get jobId() {
+    return this.jobState.currentJobId();
   }
 
   onFilterChange(search: JobFilters) {

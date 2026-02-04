@@ -5,6 +5,7 @@ import { ThemeService } from '../shared/theme.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { JobFilterService } from '../shared/job-filter';
+import { JobStateService } from '../shared/jobstate';
 
 @Component({
   selector: 'app-jobs',
@@ -16,12 +17,14 @@ import { JobFilterService } from '../shared/job-filter';
 export class JobsListComponent implements OnInit {
   jobList: Jobs[] = [];
   filteredJobsList: Jobs[] = [];
+  jobID!: number;
 
   constructor(
     private jobService: Job,
     public themeService: ThemeService,
     private router: Router,
     private filterService: JobFilterService,
+    private jobState: JobStateService,
   ) {}
 
   ngOnInit(): void {
@@ -68,8 +71,11 @@ export class JobsListComponent implements OnInit {
     return job.id;
   }
 
-  openDetailsPage(id: string) {
+  openDetailsPage(id: any) {
+    this.jobID = id;
+    console.log('Selected Job ID:', this.jobID);
     this.filterService.resetFilters();
-    this.router.navigate(['jobs', id]);
+    this.jobState.setJobId(this.jobID);
+    this.router.navigate(['jobs', this.jobID]);
   }
 }

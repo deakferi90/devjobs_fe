@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Jobs } from '../job.interface';
 import { Job } from '../service/job';
+import { JobStateService } from '../../shared/jobstate';
 
 @Component({
   selector: 'app-job-details',
@@ -17,18 +17,22 @@ export class JobsDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
     private jobService: Job,
+    private jobState: JobStateService,
   ) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log('Details page Job ID:', id);
     this.fetchJob(id);
   }
 
   fetchJob(id: number) {
     this.jobService.fetchJob(id).subscribe({
-      next: (data) => (this.job = data),
+      next: (data) => {
+        this.job = data;
+        this.jobState.setJobId(id);
+      },
       error: (err) => console.error('Failed to fetch job', err),
     });
   }

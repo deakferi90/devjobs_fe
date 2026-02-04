@@ -4,17 +4,14 @@
     src="assets/Background.png"
     alt="Logo"
   />
-
   <div class="flex my-flex">
     <img class="name-logo" src="assets/devjobs.png" alt="name-logo" />
 
     <div class="flex items-center gap-[10px]">
       <img class="name-logo" src="assets/sun.png" alt="sun-logo" />
-
       <div>
         <input
           type="checkbox"
-          #darkMode
           hidden
           id="darkModeCheckbox"
           [checked]="themeService.theme() === 'dark'"
@@ -22,7 +19,6 @@
         />
         <label class="switch" for="darkModeCheckbox"></label>
       </div>
-
       <img class="name-logo" src="assets/moon.png" alt="moon-logo" />
     </div>
   </div>
@@ -33,7 +29,7 @@
     (searchChange)="onFilterChange($event)"
   ></app-filter-component>
 } @else {
-  <div class="relative flex justify-center">
+  <div>
     <app-logo></app-logo>
   </div>
 }
