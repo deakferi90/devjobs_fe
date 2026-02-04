@@ -9,6 +9,7 @@
         placeholder="Filter by title..."
         [(ngModel)]="title"
         class="h-full border-none outline-none pl-[10px] input-el sm-input"
+        (keyup)="onKeyUp()"
       />
     </div>
 
@@ -21,6 +22,7 @@
         placeholder="Filter by location..."
         [(ngModel)]="location"
         class="h-full border-none outline-none pl-[10px] input-el sm-input"
+        (keyup)="onKeyUp()"
       />
     </div>
 
@@ -33,6 +35,7 @@
         <mat-checkbox
           class="theme-checkbox"
           [(ngModel)]="fullTime"
+          (change)="activateFilter()"
         ></mat-checkbox>
         Full Time Only
       </label>

@@ -13,4 +13,8 @@ export class Job {
   getJobs(): any {
     return this.http.get<Jobs[]>(this.apiUrl);
   }
+
+  fetchJob(id: any) {
+    return this.http.get<Jobs>(`${this.apiUrl}/${id}`);
+  }
 }

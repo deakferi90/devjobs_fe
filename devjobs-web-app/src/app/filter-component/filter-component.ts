@@ -50,10 +50,6 @@ export class FilterComponent {
   }
 
   onKeyUp() {
-    if (this.inputText.length > 0) {
-      this.textColor = 'red';
-    } else {
-      this.textColor = 'black';
-    }
+    this.activateFilter();
   }
 }

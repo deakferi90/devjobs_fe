@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Jobs } from '../job.interface';
+import { Job } from '../service/job';
 
 @Component({
   selector: 'app-job-details',
@@ -17,6 +18,7 @@ export class JobsDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
+    private jobService: Job,
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class JobsDetailsComponent implements OnInit {
   }
 
   fetchJob(id: number) {
-    this.http.get<Jobs>(`http://localhost:5000/api/jobs/${id}`).subscribe({
+    this.jobService.fetchJob(id).subscribe({
       next: (data) => (this.job = data),
       error: (err) => console.error('Failed to fetch job', err),
     });

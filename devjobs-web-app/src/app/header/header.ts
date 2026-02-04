@@ -21,7 +21,7 @@ import { ThemeService } from '../shared/theme.service';
 })
 export class Header implements OnInit, AfterViewInit {
   @Output() searchChange = new EventEmitter<JobFilters>();
-  private isDark = false;
+  jobs: any;
 
   constructor(public themeService: ThemeService) {}
 

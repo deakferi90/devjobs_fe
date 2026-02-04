@@ -63,6 +63,6 @@ export class JobsListComponent implements OnInit {
   }
 
   openDetailsPage(id: string) {
-    this.router.navigate(['details', id]);
+    this.router.navigate(['jobs', id]);
   }
 }
