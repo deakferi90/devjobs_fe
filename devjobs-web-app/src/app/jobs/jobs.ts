@@ -4,6 +4,7 @@ import { Jobs } from './job.interface';
 import { ThemeService } from '../shared/theme.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { JobFilterService } from '../shared/job-filter';
 
 @Component({
   selector: 'app-jobs',
@@ -20,10 +21,16 @@ export class JobsListComponent implements OnInit {
     private jobService: Job,
     public themeService: ThemeService,
     private router: Router,
+    private filterService: JobFilterService,
   ) {}
 
   ngOnInit(): void {
     this.getJobs();
+
+    this.filterService.getFilters().subscribe((filters) => {
+      console.log('JOBS RECEIVED FILTERS', filters);
+      this.applyFilter(filters);
+    });
   }
 
   getJobs() {
@@ -37,6 +44,7 @@ export class JobsListComponent implements OnInit {
   }
 
   applyFilter(filters: any) {
+    console.log('JOBS RECEIVED FILTERS', filters);
     const titleTerm = filters.title?.toLowerCase().trim() || '';
     const locationTerm = filters.location?.toLowerCase().trim() || '';
     const fullTimeFilter = filters.fullTime;

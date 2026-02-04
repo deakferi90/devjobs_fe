@@ -8,6 +8,7 @@ import { JobFilters } from './Job-filters';
 import { signal } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ThemeService } from '../shared/theme.service';
+import { JobFilterService } from '../shared/job-filter';
 
 @Component({
   selector: 'app-filter-component',
@@ -33,6 +34,7 @@ export class FilterComponent {
   constructor(
     private bo: BreakpointObserver,
     public themeService: ThemeService,
+    private filterService: JobFilterService,
   ) {
     this.bo.observe(['(min-width: 721px)']).subscribe((result) => {
       this.isBigger.set(result.matches);
@@ -42,14 +44,13 @@ export class FilterComponent {
   @Output() searchChange = new EventEmitter<JobFilters>();
 
   activateFilter() {
-    this.searchChange.emit({
+    console.log('FILTER EMITTED', this.title);
+    console.log('FILTER EMITTED', this.location);
+    console.log('FILTER EMITTED', this.fullTime);
+    this.filterService.setFilters({
       title: this.title,
       location: this.location,
       fullTime: this.fullTime,
     });
-  }
-
-  onKeyUp() {
-    this.activateFilter();
   }
 }

@@ -9,7 +9,7 @@
         placeholder="Filter by title..."
         [(ngModel)]="title"
         class="h-full border-none outline-none pl-[10px] input-el sm-input"
-        (keyup)="onKeyUp()"
+        (input)="activateFilter()"
       />
     </div>
 
@@ -22,7 +22,7 @@
         placeholder="Filter by location..."
         [(ngModel)]="location"
         class="h-full border-none outline-none pl-[10px] input-el sm-input"
-        (keyup)="onKeyUp()"
+        (input)="activateFilter()"
       />
     </div>
 
@@ -48,7 +48,7 @@
     class="flex justify-between items-center gap-2 relative z-10 mt-[-40px] w-[90%] mx-auto md:mt-[-28px] md:w-full md:mx-0 ml-4 mr-4 rounded-[10px] px-2 input-box"
     [class.bg-[#fff]]="themeService.theme() === 'dark'"
     [class.bg-[#19202D]]="themeService.theme() === 'dark'"
-    (keyup)="onKeyUp()"
+    (keyup)="activateFilter()"
   >
     <div class="flex-1 pl-[20px] flex items-center rounded-l-[10px] input-box">
       <input

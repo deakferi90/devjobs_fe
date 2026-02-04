@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { JobsListComponent } from './jobs/jobs';
 import { Header } from './header/header';
+import { JobFilters } from './filter-component/Job-filters';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,10 @@ import { Header } from './header/header';
 })
 export class App {
   protected readonly title = signal('devjobs-web-app');
+  @ViewChild(JobsListComponent)
+  jobsComponent!: JobsListComponent;
+
+  onFilter(filters: JobFilters) {
+    this.jobsComponent?.applyFilter(filters);
+  }
 }
