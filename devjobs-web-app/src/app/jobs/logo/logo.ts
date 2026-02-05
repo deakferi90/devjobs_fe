@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Job } from '../service/job';
 import { Jobs } from '../job.interface';
 import { JobStateService } from '../../shared/jobstate';
+import { ThemeService } from '../../shared/theme.service';
 
 @Component({
   selector: 'app-logo',
@@ -18,6 +19,7 @@ export class Logo implements OnInit {
   constructor(
     private jobService: Job,
     private jobState: JobStateService,
+    public themeService: ThemeService,
   ) {}
 
   ngOnInit() {
@@ -47,5 +49,10 @@ export class Logo implements OnInit {
       },
       error: (err) => console.error('Failed to fetch job', err),
     });
+  }
+
+  openPage(website: string) {
+    const url = website.startsWith('http') ? website : `https://${website}`;
+    window.open(url, '_blank');
   }
 }

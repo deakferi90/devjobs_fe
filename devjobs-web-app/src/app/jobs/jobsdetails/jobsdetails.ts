@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Jobs } from '../job.interface';
 import { Job } from '../service/job';
 import { JobStateService } from '../../shared/jobstate';
+import { ThemeService } from '../../shared/theme.service';
 
 @Component({
   selector: 'app-job-details',
@@ -19,6 +20,7 @@ export class JobsDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private jobService: Job,
     private jobState: JobStateService,
+    public themeService: ThemeService,
   ) {}
 
   ngOnInit(): void {

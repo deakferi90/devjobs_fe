@@ -4,6 +4,7 @@ export interface Jobs {
   logoBackground: string;
   requirements: any;
   role: any;
+  website: string;
   logo: string;
   postedAt: string;
   contract: string;
