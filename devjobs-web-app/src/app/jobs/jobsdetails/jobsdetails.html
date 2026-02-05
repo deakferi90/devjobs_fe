@@ -1,50 +1,52 @@
-@if (job) {
+<div *ngIf="job; else loading">
   <div
     class="w-[730px] my-[30px] mx-auto"
     [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
     [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
   >
     <div class="job-details p-[40px] rounded-[10px] shadow-md">
-      <div class="flex">
-        <p class="mb-4 text-[#6E8098]">{{ job.postedAt }}</p>
+      <div class="flex items-center mb-4">
+        <p class="text-[#6E8098] margin-none">{{ job.postedAt }}</p>
         <img src="assets/Oval.svg" class="w-6 h-6 mx-[10px]" />
-        <p class="mb-2 text-[#6E8098]">{{ job.contract }}</p>
+        <p class="text-[#6E8098] margin-none">{{ job.contract }}</p>
       </div>
-
-      <div class="flex justify-between">
-        <h2 class="text-2xl font-bold mt-[5px] mb-2">{{ job.position }}</h2>
+      <div class="flex justify-between items-center mb-2">
+        <h2 class="text-2xl font-bold">{{ job.position }}</h2>
         <button class="my-btn p-[15px]" (click)="applyToJob(job.apply)">
           Apply Now
         </button>
       </div>
-      <h3 class="text-lg text-gray-600 mb-4">{{ job.company }}</h3>
-      <p class="mb-2"><strong>Location:</strong> {{ job.location }}</p>
+      <p
+        class="margin-none"
+        [style.color]="themeService.theme() === 'dark' ? '#4F46E5' : '#5964E0'"
+      >
+        {{ job.location }}
+      </p>
+      <div class="mt-[32px]">
+        <div class="mb-4">
+          <p>{{ job.description }}</p>
+        </div>
 
-      <div class="mb-4">
-        <p>{{ job.description }}</p>
-      </div>
+        <div class="mb-4">
+          <h4 class="font-semibold text-2xl mb-2">Requirements:</h4>
+          <p>{{ job.requirements.content }}</p>
+          <ul class="list-disc ml-6">
+            <li *ngFor="let item of job.requirements.items">{{ item }}</li>
+          </ul>
+        </div>
 
-      <div class="mb-4">
-        <h4 class="font-semibold text-2xl">Requirements:</h4>
-        <p>{{ job.requirements.content }}</p>
-        <ul class="list-disc ml-6">
-          <li *ngFor="let item of job.requirements.items">{{ item }}</li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-semibold text-2xl">What You Will Do</h4>
-        <p>{{ job.role.content }}</p>
-        <ul class="list-disc ml-6">
-          @for (item of job.role.items; track $index) {
-            <li>{{ item }}</li>
-          }
-        </ul>
+        <div>
+          <h4 class="font-semibold text-2xl mb-2">What You Will Do</h4>
+          <p>{{ job.role.content }}</p>
+          <ul class="list-disc ml-6">
+            <li *ngFor="let item of job.role.items">{{ item }}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-}
+</div>
 
-@if (!job) {
+<ng-template #loading>
   <div class="text-center py-20 text-gray-500">Loading job details...</div>
-}
+</ng-template>
