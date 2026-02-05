@@ -10,7 +10,7 @@ export class JobStateService {
   }
 
   getJobId() {
-    return this.jobId$.asObservable(); // allows components to subscribe
+    return this.jobId$.asObservable();
   }
 
   currentJobId(): number | null {

@@ -5,6 +5,7 @@ import { Jobs } from '../job.interface';
 import { Job } from '../service/job';
 import { JobStateService } from '../../shared/jobstate';
 import { ThemeService } from '../../shared/theme.service';
+import { switchMap, of } from 'rxjs';
 
 @Component({
   selector: 'app-job-details',
@@ -24,19 +25,26 @@ export class JobsDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('Details page Job ID:', id);
-    this.fetchJob(id);
-  }
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          const id = Number(params.get('id'));
+          console.log('Details page Job ID:', id);
 
-  fetchJob(id: number) {
-    this.jobService.fetchJob(id).subscribe({
-      next: (data) => {
-        this.job = data;
-        this.jobState.setJobId(id);
-      },
-      error: (err) => console.error('Failed to fetch job', err),
-    });
+          if (this.jobState.currentJobId() === id && this.job) {
+            return of(this.job);
+          }
+
+          return this.jobService.fetchJob(id);
+        }),
+      )
+      .subscribe({
+        next: (data: Jobs) => {
+          this.job = data;
+          if (data) this.jobState.setJobId(Number(data.id));
+        },
+        error: (err) => console.error('Failed to fetch job', err),
+      });
   }
 
   applyToJob(website: string) {
