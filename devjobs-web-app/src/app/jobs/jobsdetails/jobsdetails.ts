@@ -38,4 +38,9 @@ export class JobsDetailsComponent implements OnInit {
       error: (err) => console.error('Failed to fetch job', err),
     });
   }
+
+  applyToJob(website: string) {
+    const url = website.startsWith('http') ? website : `https://${website}`;
+    window.open(url, '_blank');
+  }
 }

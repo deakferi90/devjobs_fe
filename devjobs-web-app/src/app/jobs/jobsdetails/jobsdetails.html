@@ -6,6 +6,9 @@
   >
     <div class="job-details p-[40px] rounded-[10px] shadow-md">
       <h2 class="text-2xl font-bold mb-2">{{ job.position }}</h2>
+      <button class="my-btn p-[15px]" (click)="applyToJob(job.apply)">
+        Apply Now
+      </button>
       <h3 class="text-lg text-gray-600 mb-4">{{ job.company }}</h3>
       <p class="mb-2"><strong>Location:</strong> {{ job.location }}</p>
       <p class="mb-2"><strong>Contract:</strong> {{ job.contract }}</p>

@@ -44,7 +44,6 @@ export class Logo implements OnInit {
     this.job = null;
     this.jobService.fetchJob(id).subscribe({
       next: (data) => {
-        console.log('Fetched job in Logo:', data);
         this.job = data;
       },
       error: (err) => console.error('Failed to fetch job', err),
