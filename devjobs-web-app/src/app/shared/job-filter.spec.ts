@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JobFilter } from './job-filter';
+import { JobFilterService } from './job-filter';
 
 describe('JobFilter', () => {
-  let service: JobFilter;
+  let service: JobFilterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(JobFilter);
+    service = TestBed.inject(JobFilterService);
   });
 
   it('should be created', () => {

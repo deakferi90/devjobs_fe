@@ -12,7 +12,7 @@ import { filter } from 'rxjs';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('devjobs-web-app');
+  public readonly title = signal('devjobs-web-app');
   showHeader = true;
   @ViewChild(JobsListComponent)
   jobsComponent!: JobsListComponent;
