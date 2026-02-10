@@ -1,3 +1,13 @@
 .margin-none {
   margin: 0;
 }
+
+@media screen and (max-width: 728px) {
+  .details-header {
+    justify-content: center;
+  }
+
+  .margin-none {
+    margin-top: 20px;
+  }
+}
