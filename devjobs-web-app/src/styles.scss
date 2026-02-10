@@ -62,11 +62,6 @@ body {
   background: #5964e0;
   color: white;
   cursor: pointer;
-
-  @media screen and (max-width: 720px) {
-    width: 48px;
-    height: 48px;
-  }
 }
 
 input::placeholder {
@@ -76,4 +71,13 @@ input::placeholder {
 
 .my-btn img {
   fill: white;
+}
+
+@media screen and (max-width: 728px) {
+  .filter-component {
+    .my-btn {
+      width: 48px;
+      height: 48px;
+    }
+  }
 }

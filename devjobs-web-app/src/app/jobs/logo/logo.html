@@ -1,31 +1,31 @@
 @if (job) {
   <div
-    class="relative flex mt-[-28px] text-[#19202D] gap-4 h-[140px] w-[730px] rounded-[10px] justify-between"
+    class="relative flex mt-[-28px] text-[#19202D] gap-4 h-[140px] w-[728px] rounded-[10px] justify-between job-site-container"
     [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
     [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
   >
-    <div class="flex">
+    <div class="flex justify-center inner-container">
       <div
-        class="w-[140px] flex justify-center items-center rounded-l-[10px]"
+        class="w-[140px] flex justify-center items-center rounded-l-[10px] logo-container"
         [ngStyle]="{ 'background-color': job.logoBackground }"
       >
         <img class="photo-logo" src="{{ job.logo }}" />
       </div>
 
       <div class="flex items-center">
-        <div class="ml-[40px]">
+        <div class="ml-[40px] company-container">
           <div>
             <h1>{{ job.company }}</h1>
           </div>
           <div>
-            <h4 class="text-[#6E8098] font-light">
+            <h4 class="text-[#6E8098] font-light text-center">
               {{ job.company.toLowerCase() }}.com
             </h4>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex items-center mr-[40px]">
+    <div class="flex items-center mr-[40px] company-site-btn-container">
       <button class="my-btn p-[15px]" (click)="openPage(job.website)">
         Company Site
       </button>
