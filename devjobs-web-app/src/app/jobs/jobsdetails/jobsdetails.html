@@ -21,7 +21,10 @@
           <h2 class="text-2xl font-bold whitespace-nowrap">
             {{ job.position }}
           </h2>
-          <button class="my-btn p-[15px]" (click)="applyToJob(job.apply)">
+          <button
+            class="my-btn p-[15px] mr-[30px] max-[728px]:mr-[0px]"
+            (click)="applyToJob(job.apply)"
+          >
             Apply Now
           </button>
         </div>
