@@ -1,43 +1,38 @@
 @if (job) {
-  <div class="max-[728px]:mx-[20px]">
+  <div>
     <div
-      class="w-[89vw] my-[30px] mx-auto max-[728px]:w-auto max-[728px]:my-0 rounded-[10px]"
+      class="w-[728px] my-[30px] mx-auto max-[728px]:w-[88vw] max-[728px]:my-0 max-[728px]:mx-5 rounded-[10px]"
       [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
       [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
     >
       <div
         class="job-details p-[10px] rounded-[10px] shadow-md max-[728px]:w-auto max-[728px]:mx-[20px]"
       >
-        <div class="flex justify-between items-center max-[728px]:flex-col">
-          <div>
-            <div
-              class="flex items-center mb-4 details-header max-[728px]:justify-center"
-            >
-              <p class="text-[#6E8098] m-0">{{ job.postedAt }}</p>
-              <img src="assets/Oval.svg" class="w-6 h-6 mx-[10px]" />
-              <p class="text-[#6E8098] m-0">{{ job.contract }}</p>
-            </div>
-            <div
-              class="flex justify-between items-center mb-2 max-[728px]:flex-col"
-            >
-              <h2 class="text-2xl font-bold text-center m-[0px] mb-[20px]">
-                {{ job.position }}
-              </h2>
-            </div>
-            <p
-              class="margin-none"
-              [style.color]="
-                themeService.theme() === 'dark' ? '#4F46E5' : '#5964E0'
-              "
-            >
-              {{ job.location }}
-            </p>
-          </div>
-
+        <div
+          class="flex items-center mb-4 details-header max-[728px]:justify-center"
+        >
+          <p class="text-[#6E8098] m-0">{{ job.postedAt }}</p>
+          <img src="assets/Oval.svg" class="w-6 h-6 mx-[10px]" />
+          <p class="text-[#6E8098] m-0">{{ job.contract }}</p>
+        </div>
+        <div
+          class="flex justify-between items-center mb-2 max-[728px]:flex-col"
+        >
+          <h2 class="text-2xl font-bold whitespace-nowrap">
+            {{ job.position }}
+          </h2>
           <button class="my-btn p-[15px]" (click)="applyToJob(job.apply)">
             Apply Now
           </button>
         </div>
+        <p
+          class="margin-none"
+          [style.color]="
+            themeService.theme() === 'dark' ? '#4F46E5' : '#5964E0'
+          "
+        >
+          {{ job.location }}
+        </p>
         <div class="mt-[32px]">
           <div class="mb-4">
             <p>{{ job.description }}</p>
