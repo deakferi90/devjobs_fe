@@ -1,56 +1,60 @@
-<div *ngIf="job; else loading">
-  <div
-    class="w-[728px] my-[30px] mx-auto"
-    [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
-    [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
-  >
+@if (job) {
+  <div class="max-[728px]:mx-[20px]">
     <div
-      class="job-details p-[40px] rounded-[10px] shadow-md max-[728px]:w-auto"
+      class="w-[90vw] my-[30px] mx-auto max-[728px]:w-auto max-[728px]:my-0 rounded-[10px]"
+      [style.background]="themeService.theme() === 'dark' ? '#19202D' : '#fff'"
+      [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
     >
       <div
-        class="flex items-center mb-4 details-header max-[728px]:justify-center"
+        class="job-details p-[40px] rounded-[10px] shadow-md max-[728px]:w-auto max-[728px]:mx-[20px]"
       >
-        <p class="text-[#6E8098] m-0">{{ job.postedAt }}</p>
-        <img src="assets/Oval.svg" class="w-6 h-6 mx-[10px]" />
-        <p class="text-[#6E8098] m-0">{{ job.contract }}</p>
-      </div>
-      <div class="flex justify-between items-center mb-2 max-[728px]:flex-col">
-        <h2 class="text-2xl font-bold">{{ job.position }}</h2>
-        <button class="my-btn p-[15px]" (click)="applyToJob(job.apply)">
-          Apply Now
-        </button>
-      </div>
-      <p
-        class="margin-none text-center"
-        [style.color]="themeService.theme() === 'dark' ? '#4F46E5' : '#5964E0'"
-      >
-        {{ job.location }}
-      </p>
-      <div class="mt-[32px]">
-        <div class="mb-4">
-          <p>{{ job.description }}</p>
+        <div
+          class="flex items-center mb-4 details-header max-[728px]:justify-center"
+        >
+          <p class="text-[#6E8098] m-0">{{ job.postedAt }}</p>
+          <img src="assets/Oval.svg" class="w-6 h-6 mx-[10px]" />
+          <p class="text-[#6E8098] m-0">{{ job.contract }}</p>
         </div>
-
-        <div class="mb-4">
-          <h4 class="font-semibold text-2xl mb-2">Requirements:</h4>
-          <p>{{ job.requirements.content }}</p>
-          <ul class="list-disc ml-6">
-            <li *ngFor="let item of job.requirements.items">{{ item }}</li>
-          </ul>
+        <div
+          class="flex justify-between items-center mb-2 max-[728px]:flex-col"
+        >
+          <h2 class="text-2xl font-bold text-center">{{ job.position }}</h2>
+          <button class="my-btn p-[15px]" (click)="applyToJob(job.apply)">
+            Apply Now
+          </button>
         </div>
+        <p
+          class="margin-none"
+          [style.color]="
+            themeService.theme() === 'dark' ? '#4F46E5' : '#5964E0'
+          "
+        >
+          {{ job.location }}
+        </p>
+        <div class="mt-[32px]">
+          <div class="mb-4">
+            <p>{{ job.description }}</p>
+          </div>
 
-        <div>
-          <h4 class="font-semibold text-2xl mb-2">What You Will Do</h4>
-          <p>{{ job.role.content }}</p>
-          <ul class="list-disc ml-6">
-            <li *ngFor="let item of job.role.items">{{ item }}</li>
-          </ul>
+          <div class="mb-4">
+            <h4 class="font-semibold text-2xl mb-2">Requirements:</h4>
+            <p>{{ job.requirements.content }}</p>
+            <ul class="list-disc ml-6">
+              <li *ngFor="let item of job.requirements.items">{{ item }}</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="font-semibold text-2xl mb-2">What You Will Do</h4>
+            <p>{{ job.role.content }}</p>
+            <ul class="list-disc ml-6">
+              <li *ngFor="let item of job.role.items">{{ item }}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<ng-template #loading>
+} @else {
   <div class="text-center py-20 text-gray-500">Loading job details...</div>
-</ng-template>
+}
