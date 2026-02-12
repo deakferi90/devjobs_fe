@@ -1,5 +1,9 @@
 <div
   class="flex items-center p-[10px] bg-[#fff] border-b border-b-[1px] border-[#6E8098] border-opacity-20 rounded-md"
+  [style.background-color]="
+    themeService.theme() === 'dark' ? '#19202D' : '#fff'
+  "
+  [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
 >
   <img
     src="assets/desktop/icon-location.svg"
@@ -11,18 +15,23 @@
     type="text"
     id="location"
     placeholder="Filter by location..."
+    [(ngModel)]="location"
     class="w-full outline-none h-[50px] border-0 ml-[10px]"
+    [style.background-color]="
+      themeService.theme() === 'dark' ? '#19202D' : '#fff'
+    "
+    [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
   />
 </div>
 <div
-  class="z-[1] h-[80px] flex items-center gap-[20px] rounded-lg shadow-sm px-4 rounded-r-[10px] filtering-boxes"
+  class="z-[1] h-[80px] gap-[20px] shadow-sm pb-[48px] px-0 filtering-boxes"
   [style.background-color]="
     themeService.theme() === 'dark' ? '#19202D' : '#fff'
   "
   [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
 >
   <label
-    class="flex items-center gap-0 font-bold label-text"
+    class="flex items-center gap-0 font-bold label-text pt-[10px] pb-[10px]"
     [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
   >
     <mat-checkbox
@@ -39,6 +48,7 @@
       themeService.theme() === 'dark' ? '#5964E0' : '#4F46E5'
     "
     [style.color]="'#fff'"
+    (click)="activateFilter()"
   >
     Search
   </button>

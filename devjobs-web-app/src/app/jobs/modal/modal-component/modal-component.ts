@@ -4,6 +4,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { ThemeService } from '../../../shared/theme.service';
+import { JobFilterService } from '../../../shared/job-filter';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mobile-view',
@@ -15,5 +17,18 @@ export class ModalComponent {
   readonly dialog = inject(MatDialog);
   location: string = '';
   fullTime: boolean = false;
-  constructor(public themeService: ThemeService) {}
+  constructor(
+    public themeService: ThemeService,
+    private filterService: JobFilterService,
+    private dialogRef: MatDialogRef<any>,
+  ) {}
+
+  activateFilter() {
+    this.filterService.setFilters({
+      title: '',
+      location: this.location,
+      fullTime: this.fullTime,
+    });
+    this.dialogRef.close();
+  }
 }
