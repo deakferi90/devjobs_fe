@@ -57,6 +57,11 @@ export class FilterComponent {
   openDialog() {
     this.dialog.open(ModalComponent, {
       panelClass: 'no-radius-dialog',
+      data: {
+        title: this.title,
+        location: this.location,
+        fullTime: this.fullTime,
+      },
     });
   }
 }

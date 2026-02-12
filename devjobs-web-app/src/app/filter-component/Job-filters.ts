@@ -1,5 +1,5 @@
 export interface JobFilters {
-  title: string;
+  title: any;
   location: string;
   fullTime: boolean;
 }
