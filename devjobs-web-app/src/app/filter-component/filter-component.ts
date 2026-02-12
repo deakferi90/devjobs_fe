@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +9,8 @@ import { signal } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ThemeService } from '../shared/theme.service';
 import { JobFilterService } from '../shared/job-filter';
+import { ModalComponent } from '../jobs/modal/modal-component/modal-component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-filter-component',
@@ -30,6 +32,7 @@ export class FilterComponent {
   isBigger = signal(true);
   inputText: string = '';
   textColor: string = 'black';
+  readonly dialog = inject(MatDialog);
 
   constructor(
     private bo: BreakpointObserver,
@@ -48,6 +51,12 @@ export class FilterComponent {
       title: this.title,
       location: this.location,
       fullTime: this.fullTime,
+    });
+  }
+
+  openDialog() {
+    this.dialog.open(ModalComponent, {
+      panelClass: 'no-radius-dialog',
     });
   }
 }

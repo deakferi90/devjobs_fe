@@ -1,30 +1,19 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  model,
-  signal,
-} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogRef,
-  MatDialogTitle,
-} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MatDialog } from '@angular/material/dialog';
+import { ThemeService } from '../../../shared/theme.service';
 
 @Component({
   selector: 'app-mobile-view',
-  imports: [],
+  imports: [FormsModule, MatButtonModule, MatCheckboxModule],
   templateUrl: './modal-component.html',
   styleUrl: './modal-component.scss',
 })
 export class ModalComponent {
   readonly dialog = inject(MatDialog);
+  location: string = '';
+  fullTime: boolean = false;
+  constructor(public themeService: ThemeService) {}
 }

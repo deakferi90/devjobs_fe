@@ -1,1 +1,45 @@
-<p>mobile-view works!</p>
+<div
+  class="flex items-center p-[10px] bg-[#fff] border-b border-b-[1px] border-[#6E8098] border-opacity-20 rounded-md"
+>
+  <img
+    src="assets/desktop/icon-location.svg"
+    class="w-4 h-4 mr-3 flex-shrink-0"
+    alt="location icon"
+  />
+
+  <input
+    type="text"
+    id="location"
+    placeholder="Filter by location..."
+    class="w-full outline-none h-[50px] border-0 ml-[10px]"
+  />
+</div>
+<div
+  class="z-[1] h-[80px] flex items-center gap-[20px] rounded-lg shadow-sm px-4 rounded-r-[10px] filtering-boxes"
+  [style.background-color]="
+    themeService.theme() === 'dark' ? '#19202D' : '#fff'
+  "
+  [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
+>
+  <label
+    class="flex items-center gap-0 font-bold label-text"
+    [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
+  >
+    <mat-checkbox
+      [(ngModel)]="fullTime"
+      name="fullTime"
+      [style.color]="themeService.theme() === 'dark' ? '#fff' : '#19202D'"
+    ></mat-checkbox>
+    Full Time Only
+  </label>
+
+  <button
+    class="my-btn"
+    [style.background-color]="
+      themeService.theme() === 'dark' ? '#5964E0' : '#4F46E5'
+    "
+    [style.color]="'#fff'"
+  >
+    Search
+  </button>
+</div>
